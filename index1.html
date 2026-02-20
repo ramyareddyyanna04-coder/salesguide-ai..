@@ -21,9 +21,20 @@
 <div id="result"></div>
 
 <script>
-async function getSolution() {
+  async function getSolution() {
   const problem = document.getElementById("problem").value;
 
+  const response = await fetch("/api/solve", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ problem })
+  });
+
+  const data = await response.json();
+  document.getElementById("result").innerText = data.result;
+}
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
