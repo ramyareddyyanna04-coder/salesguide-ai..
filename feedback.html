@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SalesQuid - Customer Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>SalesQuid - Customer Feedback</h2>
+
+        <input type="text" id="customerName" placeholder="Customer Name">
+        <input type="text" id="productName" placeholder="Product Name">
+
+        <select id="rating">
+            <option value="">Select Rating</option>
+            <option value="5">5 - Excellent</option>
+            <option value="4">4 - Good</option>
+            <option value="3">3 - Average</option>
+            <option value="2">2 - Poor</option>
+            <option value="1">1 - Very Bad</option>
+        </select>
+
+        <textarea id="feedbackText" rows="4" placeholder="Write your feedback here..."></textarea>
+
+        <button onclick="submitFeedback()">Submit Feedback</button>
+
+        <div class="message" id="successMessage"></div>
+    </div>
+
+    <script>
+        function submitFeedback() {
+            let name = document.getElementById("customerName").value;
+            let product = document.getElementById("productName").value;
+            let rating = document.getElementById("rating").value;
+            let feedback = document.getElementById("feedbackText").value;
+
+            if(name === "" || product === "" || rating === "" || feedback === "") {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            // For now we just show success message
+            document.getElementById("successMessage").innerHTML =
+                "Thank you! Your feedback has been submitted.";
+
+            // Clear fields
+            document.getElementById("customerName").value = "";
+            document.getElementById("productName").value = "";
+            document.getElementById("rating").value = "";
+            document.getElementById("feedbackText").value = "";
+        }
+    </script>
+
+</body>
+</html>
